@@ -1,0 +1,46 @@
+.panel {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--stroke-soft);
+  border-radius: var(--radius-panel);
+  background: var(--glass-panel-bg);
+  backdrop-filter: blur(var(--blur-strong)) saturate(1.15);
+  box-shadow: var(--shadow-soft);
+}
+
+.panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at top left, rgba(255, 255, 255, 0.42), transparent 34%),
+    radial-gradient(circle at 82% 18%, rgba(255, 239, 227, 0.22), transparent 26%),
+    var(--glass-highlight),
+    linear-gradient(180deg, var(--surface-panel-highlight), transparent 62%);
+}
+
+.panel::after {
+  content: "";
+  position: absolute;
+  inset: 1px;
+  pointer-events: none;
+  border-radius: calc(var(--radius-panel) - 2px);
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  mask-image: linear-gradient(180deg, rgba(255, 255, 255, 0.72), transparent 54%);
+}
+
+.panel[data-tone="strong"] {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.12), transparent 22%),
+    linear-gradient(180deg, var(--surface-panel-tint), transparent 60%),
+    var(--glass-panel-strong-bg);
+  border-color: var(--stroke-strong);
+  box-shadow: var(--shadow-floating);
+}
+
+.panel[data-tone="tinted"] {
+  background:
+    linear-gradient(180deg, var(--surface-panel-tint), transparent 58%),
+    var(--glass-panel-tinted-bg);
+}
